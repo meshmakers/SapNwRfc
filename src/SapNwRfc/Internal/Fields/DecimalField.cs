@@ -6,16 +6,16 @@ using SapNwRfc.Internal.Interop;
 namespace SapNwRfc.Internal.Fields
 {
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "Reflection use")]
-    internal sealed class DecimalField : Field<decimal>
+    internal sealed class DecimalField : Field<decimal?>
     {
-        public DecimalField(string name, decimal value)
+        public DecimalField(string name, decimal? value)
             : base(name, value)
         {
         }
 
         public override void Apply(RfcInterop interop, IntPtr dataHandle)
         {
-            var stringValue = Value.ToString(CultureInfo.InvariantCulture);
+            var stringValue = (Value ?? 0.0m).ToString(CultureInfo.InvariantCulture);
 
             RfcResultCode resultCode = interop.SetString(
                 dataHandle: dataHandle,
@@ -61,6 +61,6 @@ namespace SapNwRfc.Internal.Fields
 
         [ExcludeFromCodeCoverage]
         public override string ToString()
-            => $"{Name} = {Value.ToString(CultureInfo.InvariantCulture)}M";
+            => $"{Name} = {(Value ?? 0m).ToString(CultureInfo.InvariantCulture)}M";
     }
 }

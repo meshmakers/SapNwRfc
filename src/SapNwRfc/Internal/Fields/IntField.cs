@@ -5,9 +5,9 @@ using SapNwRfc.Internal.Interop;
 namespace SapNwRfc.Internal.Fields
 {
     [SuppressMessage("ReSharper", "MemberCanBePrivate.Global", Justification = "Reflection use")]
-    internal sealed class IntField : Field<int>
+    internal sealed class IntField : Field<int?>
     {
-        public IntField(string name, int value)
+        public IntField(string name, int? value)
             : base(name, value)
         {
         }
@@ -17,7 +17,7 @@ namespace SapNwRfc.Internal.Fields
             RfcResultCode resultCode = interop.SetInt(
                 dataHandle: dataHandle,
                 name: Name,
-                value: Value,
+                value: Value ?? 0,
                 errorInfo: out RfcErrorInfo errorInfo);
 
             resultCode.ThrowOnError(errorInfo);

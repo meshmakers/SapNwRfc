@@ -78,20 +78,24 @@ namespace SapNwRfc.Internal
             {
                 extractMethod = GetMethodInfo(() => StringField.Extract(default, default, default));
             }
-            else if (propertyInfo.PropertyType == typeof(int))
+            else if (propertyInfo.PropertyType == typeof(int) || propertyInfo.PropertyType == typeof(int?))
             {
+                convertToNonNullable = propertyInfo.PropertyType == typeof(int);
                 extractMethod = GetMethodInfo(() => IntField.Extract(default, default, default));
             }
-            else if (propertyInfo.PropertyType == typeof(long))
+            else if (propertyInfo.PropertyType == typeof(long) || propertyInfo.PropertyType == typeof(long?))
             {
+                convertToNonNullable = propertyInfo.PropertyType == typeof(long);
                 extractMethod = GetMethodInfo(() => LongField.Extract(default, default, default));
             }
-            else if (propertyInfo.PropertyType == typeof(double))
+            else if (propertyInfo.PropertyType == typeof(double) || propertyInfo.PropertyType == typeof(double?))
             {
+                convertToNonNullable = propertyInfo.PropertyType == typeof(double);
                 extractMethod = GetMethodInfo(() => DoubleField.Extract(default, default, default));
             }
-            else if (propertyInfo.PropertyType == typeof(decimal))
+            else if (propertyInfo.PropertyType == typeof(decimal) || propertyInfo.PropertyType == typeof(decimal?))
             {
+                convertToNonNullable = propertyInfo.PropertyType == typeof(decimal);
                 extractMethod = GetMethodInfo(() => DecimalField.Extract(default, default, default));
             }
             else if (propertyInfo.PropertyType == typeof(byte[]))

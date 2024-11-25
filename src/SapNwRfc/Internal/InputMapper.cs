@@ -82,25 +82,29 @@ namespace SapNwRfc.Internal
                 // new RfcStringField(name, (string)value);
                 fieldConstructor = GetFieldConstructor(() => new StringField(default, default));
             }
-            else if (propertyInfo.PropertyType == typeof(int))
+            else if (propertyInfo.PropertyType == typeof(int) || propertyInfo.PropertyType == typeof(int?))
             {
                 // new RfcIntField(name, (int)value);
                 fieldConstructor = GetFieldConstructor(() => new IntField(default, default));
+                property = Expression.Convert(property, typeof(int?));
             }
-            else if (propertyInfo.PropertyType == typeof(long))
+            else if (propertyInfo.PropertyType == typeof(long) || propertyInfo.PropertyType == typeof(long?))
             {
                 // new RfcLongField(name, (long)value);
                 fieldConstructor = GetFieldConstructor(() => new LongField(default, default));
+                property = Expression.Convert(property, typeof(long?));
             }
-            else if (propertyInfo.PropertyType == typeof(double))
+            else if (propertyInfo.PropertyType == typeof(double) || propertyInfo.PropertyType == typeof(double?))
             {
                 // new RfcDoubleField(name, (double)value);
                 fieldConstructor = GetFieldConstructor(() => new DoubleField(default, default));
+                property = Expression.Convert(property, typeof(double?));
             }
-            else if (propertyInfo.PropertyType == typeof(decimal))
+            else if (propertyInfo.PropertyType == typeof(decimal) || propertyInfo.PropertyType == typeof(decimal?))
             {
                 // new RfcDecimalField(name, (decimal)value);
                 fieldConstructor = GetFieldConstructor(() => new DecimalField(default, default));
+                property = Expression.Convert(property, typeof(decimal?));
             }
             else if (propertyInfo.PropertyType == typeof(byte[]))
             {
