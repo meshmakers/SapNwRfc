@@ -39,9 +39,9 @@ namespace SapNwRfc.Internal
                 .Where(x => x != null);
 
             Expression[] body = Array.Empty<Expression>()
-                .Concat(new[] { Expression.Assign(result, Expression.New(type)) })
+                .Concat([Expression.Assign(result, Expression.New(type))])
                 .Concat(extractExpressionsForProperties)
-                .Concat(new[] { result })
+                .Concat([result])
                 .ToArray();
 
             var expression = Expression.Lambda<Func<RfcInterop, IntPtr, object>>(

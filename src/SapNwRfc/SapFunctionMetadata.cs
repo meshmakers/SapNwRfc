@@ -1,4 +1,3 @@
-using System;
 using SapNwRfc.Internal.Interop;
 
 namespace SapNwRfc
@@ -33,8 +32,7 @@ namespace SapNwRfc
         }
 
         /// <inheritdoc cref="ISapFunctionMetadata"/>
-        public ISapMetadataCollection<ISapParameterMetadata> Parameters => _parameters ??
-            (_parameters = new SapMetadataCollection<ISapParameterMetadata>(GetParameterByIndex, GetParameterByName, GetParameterCount));
+        public ISapMetadataCollection<ISapParameterMetadata> Parameters => _parameters ??= new SapMetadataCollection<ISapParameterMetadata>(GetParameterByIndex, GetParameterByName, GetParameterCount);
 
         private ISapParameterMetadata GetParameterByIndex(int index)
         {
@@ -78,8 +76,7 @@ namespace SapNwRfc
         }
 
         /// <inheritdoc cref="ISapFunctionMetadata"/>
-        public ISapMetadataCollection<ISapExceptionMetadata> Exceptions => _exceptions ??
-            (_exceptions = new SapMetadataCollection<ISapExceptionMetadata>(GetExceptionByIndex, GetExceptionByName, GetExceptionCount));
+        public ISapMetadataCollection<ISapExceptionMetadata> Exceptions => _exceptions ??= new SapMetadataCollection<ISapExceptionMetadata>(GetExceptionByIndex, GetExceptionByName, GetExceptionCount);
 
         private ISapExceptionMetadata GetExceptionByIndex(int index)
         {

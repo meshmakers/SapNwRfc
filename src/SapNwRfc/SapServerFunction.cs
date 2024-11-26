@@ -1,4 +1,3 @@
-using System;
 using SapNwRfc.Internal;
 using SapNwRfc.Internal.Interop;
 
@@ -50,7 +49,7 @@ namespace SapNwRfc
         }
 
         /// <inheritdoc cref="ISapFunction"/>
-        public ISapFunctionMetadata Metadata => _functionMetadata ?? (_functionMetadata = new SapFunctionMetadata(_interop, _functionDescriptionHandle));
+        public ISapFunctionMetadata Metadata => _functionMetadata ??= new SapFunctionMetadata(_interop, _functionDescriptionHandle);
 
         /// <inheritdoc cref="ISapServerFunction"/>
         public TOutput GetParameters<TOutput>()
