@@ -18,7 +18,7 @@
 	  <DelaySign>false</DelaySign>
     <AssemblyOriginatorKeyFile>..\..\Signing.snk</AssemblyOriginatorKeyFile>
     <Nullable>disable</Nullable>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
